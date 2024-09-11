@@ -1,28 +1,29 @@
-
 /* eslint-disable react/prop-types */
+
 
 const Header = (props) => {
   return (
     <div>
-      <p>
-        {props.course}
-      </p>
+      <p>{props.course}</p>
     </div>
+  );
+};
+
+
+const Part = (props) => {
+  return (
+    <p>
+      {props.part}: Exercise = {props.exercises}
+    </p>
   );
 };
 
 const Content = (props) => {
   return (
     <div>
-      <p>
-        {props.part1}: exercise1 = {props.exercise1}
-      </p>
-      <p>
-        {props.part2}: exercise2 = {props.exercise2}
-      </p>
-      <p>
-        {props.part3}: exercise3 = {props.exercise3}
-      </p>
+      <Part part={props.part1} exercises={props.exercises1} />
+      <Part part={props.part2} exercises={props.exercises2} />
+      <Part part={props.part3} exercises={props.exercises3} />
     </div>
   );
 };
@@ -30,10 +31,11 @@ const Content = (props) => {
 const Total = (props) => {
   return (
     <div>
-      <p>Total number of exercises :{props.total}</p>
+      <p>Total number of exercises: {props.total}</p>
     </div>
   );
 };
+
 
 const App = () => {
   const course = "Half Stack application development";
@@ -43,8 +45,6 @@ const App = () => {
   const exercises2 = 7;
   const part3 = "State of a component";
   const exercises3 = 14;
-  
-
 
   return (
     <div>
@@ -52,21 +52,16 @@ const App = () => {
         <Header course={course} />
       </h2>
 
-      <p> 
-        <Content
-          part1={part1}
-          exercise1={ exercises1}
-          part2={part2}
-          exercise2={exercises2}
-          part3={part3}
-          exercise3={exercises3}
-        />
-      </p>
-   
-      <p>
-       
-        <Total total={exercises1 + exercises2 + exercises3} />
-      </p>
+      <Content
+        part1={part1}
+        exercises1={exercises1}
+        part2={part2}
+        exercises2={exercises2}
+        part3={part3}
+        exercises3={exercises3}
+      />
+
+      <Total total={exercises1 + exercises2 + exercises3} />
     </div>
   );
 };
